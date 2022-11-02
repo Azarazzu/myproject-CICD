@@ -1,10 +1,10 @@
 pipeline {
     agent any
     environment {
-        PROJECT_ID = 'PROJECT-ID'
-        CLUSTER_NAME = 'CLUSTER-NAME'
-        LOCATION = 'CLUSTER-LOCATION'
-        CREDENTIALS_ID = 'gke'
+        PROJECT_ID = 'isolvepeppol-359711'
+        CLUSTER_NAME = 'demo-jenkins'
+        LOCATION = 'us-central1-c'
+        CREDENTIALS_ID = 'kube-secret'
     }
     stages {
         stage("Checkout code") {
