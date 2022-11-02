@@ -32,6 +32,9 @@ pipeline {
         }
         stage('Deploy to GKE') {
             steps{
+                library('piper-lib-os')
+                kubernetesDeploy script: this
+
                 sh "sed -i 's/hello:latest/hello:${env.BUILD_ID}/g' deployment.yaml"
                 step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'deployment.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true ])
             }
