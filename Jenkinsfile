@@ -5,6 +5,7 @@ pipeline {
         CLUSTER_NAME = 'demo-jenkins'
         LOCATION = 'us-central1-c'
         CREDENTIALS_ID = 'kube-secret'
+        registryCredential = 'Dockerhub-ID'
     }
     stages {
         stage("Checkout code") {
@@ -22,7 +23,7 @@ pipeline {
         stage("Push image") {
             steps {
                 script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+                    docker.withRegistry('https://registry.hub.docker.com', registryCredential ) {
                             myapp.push("latest")
                             myapp.push("${env.BUILD_ID}")
                     }
