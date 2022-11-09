@@ -4,8 +4,8 @@ pipeline {
         PROJECT_ID = 'isolvepeppol-359711'
         CLUSTER_NAME = 'demo-jenkins'
         LOCATION = 'us-central1-c'
-        CREDENTIALS_ID = 'kubernetes'
-        registryCredential = 'Dockerhub-ID'
+        CREDENTIALS_ID = 'gke'
+        registryCredential = 'Docker-ID'
     }
     stages {
         stage("Checkout code") {
