@@ -34,7 +34,7 @@ pipeline {
             steps{
                 // sh "sed -i 's/hello:latest/hello:${env.BUILD_ID}/g' deployment.yaml"
                 // step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'deployment.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true ])
-                withRegistry(CREDENTIALS_ID) {
+                withKubeConfig([credentialsId: 'kube-config']) {
               sh 'curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"'
               sh 'chmod u+x ./kubectl'
               sh './kubectl apply -f deployment.yaml'
