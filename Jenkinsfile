@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         PROJECT_ID = 'isolvepeppol-359711'
-        CLUSTER_NAME = 'demo-jenkins'
+        CLUSTER_NAME = 'demo-jenkins1'
         LOCATION = 'us-central1-c'
         CREDENTIALS_ID = 'gke'
         registryCredential = 'Docker-ID'
